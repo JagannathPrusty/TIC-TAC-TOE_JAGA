@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.game-container {
+  text-align: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: slideUp 1.2s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.status {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 8px;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border: 2px solid #333;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cell.X {
+  color: #007bff;
+}
+
+.cell.O {
+  color: #ff4d4d;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #007bff;
+  transform: scale(1.05);
+}
+
+/* Winning Line */
+.win-line {
+  position: absolute;
+  height: 5px;
+  background-color: #00cc66;
+  width: 0;
+  top: 0;
+  left: 0;
+  transform-origin: left center;
+  transition: width 0.5s ease, transform 0.5s ease, top 0.3s ease, left 0.3s ease;
+  z-index: 10;
+}
+
+/* Mobile Responsive */
+@media (max-width: 500px) {
+  .game-container {
+    padding: 20px;
+    width: 90vw;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .status {
+    font-size: 1rem;
+  }
+
+  .board {
+    grid-template-columns: repeat(3, 70px);
+    grid-gap: 6px;
+  }
+
+  .cell {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .win-line {
+    height: 4px;
+  }
+}
